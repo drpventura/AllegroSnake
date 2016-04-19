@@ -47,7 +47,26 @@ int main(void) {
  */
 void al_user_keyboard_input(gamestate_t *gs, ALLEGRO_EVENT *ev) {
 
-	// TODO: add your input handling here
+	if (ev->type == ALLEGRO_EVENT_KEY_DOWN) {
+		switch (ev->keyboard.keycode) {
+		case ALLEGRO_KEY_LEFT:
+			gs->keys[LEFT] = true;
+			break;
+		case ALLEGRO_KEY_RIGHT:
+			gs->keys[RIGHT] = true;
+			break;
+		}
+	}
+	else if (ev->type == ALLEGRO_EVENT_KEY_UP) {
+		switch (ev->keyboard.keycode) {
+		case ALLEGRO_KEY_LEFT:
+			gs->keys[LEFT] = false;
+			break;
+		case ALLEGRO_KEY_RIGHT:
+			gs->keys[RIGHT] = false;
+			break;
+		}
+	}
 
 } // al_user_keyboard_input ===================================================
 
