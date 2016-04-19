@@ -77,9 +77,13 @@ void al_user_update_game(gamestate_t *gs) {
 
 	if (gs->keys[LEFT] && gs->headPos.col > 0) {
 		gs->headPos.col--;
+		gs->keys[LEFT] = false; // turn off key press right after processing
+
 	}
 	if (gs->keys[RIGHT] && gs->headPos.col < NUM_COLS - 1) {
 		gs->headPos.col++;
+		gs->keys[RIGHT] = false; // turn off key press right after processing
+
 	}
 
 } // end al_user_update_game ==================================================
