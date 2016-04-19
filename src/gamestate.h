@@ -38,6 +38,22 @@
 enum KEYS{LEFT, RIGHT, PAUSE};
 
 /**
+ * A point in the Cartesian plane.
+ */
+typedef struct point_t {
+	int x;
+	int y;
+} point_t;
+
+/**
+ *  A position on the board.
+ */
+typedef struct position_t {
+	int row;
+	int col;
+} position_t;
+
+/**
  * Struct to represent the state of the game
  */
 typedef struct gamestate_t {
