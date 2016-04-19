@@ -10,6 +10,28 @@
 #include "gamestate.h"
 #include "allegro_shell.h"
 
+// A point in the Cartesian plane.
+typedef struct point_t {
+	int x;
+	int y;
+} point_t;
+
+// A position on the board.
+typedef struct position_t {
+	int row;
+	int col;
+} position_t;
+
+/**
+ * Returns the point corresponding to the given row, col.
+ */
+point_t to_point(int row, int col);
+
+/**
+ * Returns the position (row, col) corresponding to the given x, y.
+ */
+position_t to_position(int x, int y);
+
 int main(void) {
 	gamestate_t gamestate;
 	gamestate.bgcolor = al_map_rgb_f(0, 0, 0);
@@ -55,3 +77,13 @@ void al_user_render_game(gamestate_t *gs) {
 	// TODO: add your game rendering logic here
 
 } // end al_user_render_game ==================================================
+
+point_t to_point(int row, int col) {
+	point_t result = { col * BLOCK_SIZE, row * BLOCK_SIZE };
+	return result;
+} // end to_point =============================================================
+
+position_t to_position(int x, int y) {
+	position_t result = { y / BLOCK_SIZE, x / BLOCK_SIZE };
+	return result;
+} // end to_position ==========================================================
