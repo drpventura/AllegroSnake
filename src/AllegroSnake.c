@@ -10,7 +10,6 @@
 #include "gamestate.h"
 #include "allegro_shell.h"
 
-
 /**
  * Returns the point corresponding to the given row, col.
  */
@@ -24,6 +23,9 @@ position_t to_position(int x, int y);
 int main(void) {
 	gamestate_t gamestate;
 	gamestate.bgcolor = al_map_rgb_f(0, 0, 0);
+	gamestate.headPos.row = NUM_ROWS / 2;
+	gamestate.headPos.col = NUM_COLS / 2;
+
 	// init keys
 	for (int i = 0; i < NUM_KEYS; i++) {
 		gamestate.keys[i] = false;
@@ -76,7 +78,7 @@ void drawGrid() {
 void al_user_render_game(gamestate_t *gs) {
 	point_t head_pt = to_point(gs->headPos.row, gs->headPos.col);
 
-	al_draw_filled_circle(gs->headPos, gs->headY + BLOCK_SIZE / 2, gs->headX + BLOCK_SIZE, gs->headY + BLOCK_SIZE, al_map_rgb(255, 0, 0));
+	al_draw_filled_circle(head_pt.x + BLOCK_SIZE / 2, head_pt.y + BLOCK_SIZE / 2, BLOCK_SIZE / 2, al_map_rgb(255, 0, 0));
 
 	drawGrid();
 
