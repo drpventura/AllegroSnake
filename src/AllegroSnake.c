@@ -10,17 +10,6 @@
 #include "gamestate.h"
 #include "allegro_shell.h"
 
-// A point in the Cartesian plane.
-typedef struct point_t {
-	int x;
-	int y;
-} point_t;
-
-// A position on the board.
-typedef struct position_t {
-	int row;
-	int col;
-} position_t;
 
 /**
  * Returns the point corresponding to the given row, col.
