@@ -75,7 +75,12 @@ void al_user_keyboard_input(gamestate_t *gs, ALLEGRO_EVENT *ev) {
  */
 void al_user_update_game(gamestate_t *gs) {
 
-	// TODO: add your game update logic here
+	if (gs->keys[LEFT] && gs->headPos.col > 0) {
+		gs->headPos.col--;
+	}
+	if (gs->keys[RIGHT] && gs->headPos.col < NUM_COLS - 1) {
+		gs->headPos.col++;
+	}
 
 } // end al_user_update_game ==================================================
 
