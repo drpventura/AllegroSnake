@@ -66,6 +66,7 @@ typedef struct gamestate_t {
 	// TODO: Your additional fields here
 	bool keys[3];
 
+	position_t headPos;
 } gamestate_t;
 
 #endif /* GAMESTATE_H_ */

@@ -70,11 +70,26 @@ void al_user_update_game(gamestate_t *gs) {
 } // end al_user_update_game ==================================================
 
 /**
+ * Draws gridlines on the board (for debugging).
+ */
+void drawGrid() {
+	for (int r = 0; r < NUM_ROWS; r++) {
+		al_draw_line(0, r * BLOCK_SIZE, SCREEN_WIDTH, r * BLOCK_SIZE, al_map_rgb(255, 255, 255), 0);
+	}
+	for (int c = 0; c < NUM_COLS; c++) {
+		al_draw_line(c * BLOCK_SIZE, 0, c * BLOCK_SIZE, SCREEN_HEIGHT, al_map_rgb(255, 255, 255), 0);
+	}
+} // end drawGrid =============================================================
+
+/**
  * Render the game.
  */
 void al_user_render_game(gamestate_t *gs) {
+	point_t head_pt = to_point(gs->headPos.row, gs->headPos.col);
 
-	// TODO: add your game rendering logic here
+	al_draw_filled_circle(gs->headPos, gs->headY + BLOCK_SIZE / 2, gs->headX + BLOCK_SIZE, gs->headY + BLOCK_SIZE, al_map_rgb(255, 0, 0));
+
+	drawGrid();
 
 } // end al_user_render_game ==================================================
 
