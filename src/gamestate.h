@@ -30,12 +30,12 @@
 #define NUM_COLS SCREEN_WIDTH / BLOCK_SIZE
 
 // Size of the gamestate keys array
-#define NUM_KEYS 3
+#define NUM_KEYS 5
 
 /**
  * Enumeration used for indexing into the gamestate keys array.
  */
-enum KEYS{LEFT, RIGHT, PAUSE};
+enum KEYS{UP, RIGHT, DOWN, LEFT, PAUSE};
 
 /**
  * A point in the Cartesian plane.
@@ -80,8 +80,8 @@ typedef struct gamestate_t {
 	int gameFPS;
 
 	// TODO: Your additional fields here
-	bool keys[3];
-
+	bool keys[NUM_KEYS];
+	DArray *body;
 } gamestate_t;
 
 #endif /* GAMESTATE_H_ */

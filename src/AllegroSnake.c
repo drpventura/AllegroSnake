@@ -24,6 +24,8 @@ position_t to_position(int x, int y);
 int main(void) {
 	gamestate_t gamestate;
 	gamestate.bgcolor = al_map_rgb_f(0, 0, 0);
+	gamestate.body = DArray_create(sizeof(position_t), 10);
+	
 	// init keys
 	for (int i = 0; i < NUM_KEYS; i++) {
 		gamestate.keys[i] = false;
@@ -38,6 +40,8 @@ int main(void) {
 	al_shell_gameloop(&gamestate);
 
 	al_shell_cleanup(&gamestate);
+	// don't leak memory
+	DArray_clear_destroy(gamestate.body);
 } // end main =================================================================
 
 /**
