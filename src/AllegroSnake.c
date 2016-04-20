@@ -25,7 +25,8 @@ int main(void) {
 	gamestate.bgcolor = al_map_rgb_f(0, 0, 0);
 	gamestate.headPos.row = NUM_ROWS / 2;
 	gamestate.headPos.col = NUM_COLS / 2;
-
+	gamestate.body = DArray_create(sizeof(position_t), 10);
+	
 	// init keys
 	for (int i = 0; i < NUM_KEYS; i++) {
 		gamestate.keys[i] = false;
@@ -40,6 +41,8 @@ int main(void) {
 	al_shell_gameloop(&gamestate);
 
 	al_shell_cleanup(&gamestate);
+	// don't leak memory
+	DArray_clear_destroy(gamestate.body);
 } // end main =================================================================
 
 /**
@@ -49,6 +52,7 @@ void al_user_keyboard_input(gamestate_t *gs, ALLEGRO_EVENT *ev) {
 
 	if (ev->type == ALLEGRO_EVENT_KEY_DOWN) {
 		switch (ev->keyboard.keycode) {
+		case ALLEGRO_KEY_A:
 		case ALLEGRO_KEY_LEFT:
 			gs->keys[LEFT] = true;
 			break;
